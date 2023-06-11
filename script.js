@@ -24,7 +24,7 @@ function arenaSweep(){
 
 function collide(arena, player){
 
-    const m = player.metrix;
+    const m = player.matrix;
     const o = player.pos;
     for(let y = 0; y< m.length; ++y){
         for (let x = 0; x < m[y].length; ++x){
@@ -36,12 +36,12 @@ function collide(arena, player){
     return false;
 }
 
-function createMetrix(w, h){
-    const metrix = [];
+function createMatrix(w, h){
+    const matrix = [];
     while (h--){
-        metrix.push(new Array[w].fill(0));
+        matrix.push(new Array[w].fill(0));
     }
-    return metrix;
+    return matrix;
 }
 
 function createPiece(type){
@@ -92,7 +92,7 @@ function createPiece(type){
 }
 
 
-function drawMetrix(matrix, offset){
+function drawMatrix(matrix, offset){
 
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -103,3 +103,21 @@ function drawMetrix(matrix, offset){
         });
     });
 }
+
+function draw(){
+    context.fillStyle = "#000";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    drawMatrix(arena, {x: 0, y: 0});
+    drawMatrix(player.matrix, player.pos);
+}
+
+function merge(player, arena){
+    player.matrix.forEach((row, y) => {
+        row.forEach((value, x) =>{
+            if (value !== 0){
+                arena[y + player.pos.y][x + player.pos.x]= value;
+            }
+        });
+    });
+}
+
