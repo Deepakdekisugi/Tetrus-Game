@@ -41,7 +41,7 @@ function collide(arena, player){
 function createMatrix(w, h){
     const matrix = [];
     while (h--){
-        matrix.push(new Array[w].fill(0));
+        matrix.push(new Array(w).fill(0));
     }
     return matrix;
 }
@@ -204,7 +204,7 @@ function update(time = 0){
 
 
 function updateScore(){
-    document.getElementById("score").innerText = "score : " + player.score;
+    document.getElementById("score").innerText = "Score : " + player.score;
 }
 
 document.addEventListener("keydown", (event) =>{
@@ -236,9 +236,9 @@ const colors = [
 
 const arena = createMatrix(12, 20);
 const player = {
-    pos: {x : 0, y : 0},
-    matrix : null,
-    score : 0,
+    pos: {x: 0, y: 0},
+    matrix: null,
+    score: 0,
 };
 
 playerReset();
