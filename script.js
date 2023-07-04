@@ -7,7 +7,7 @@ function arenaSweep(){
 
     let rowCount = 1;
 
-    outer: for(let y = arena.length; y > 0; --y){
+    outer: for(let y = arena.length - 1; y > 0; --y){
         for (let x = 0; x < arena[y].length; ++x){
             if (arena[y][x] === 0){
                 continue outer;
@@ -161,7 +161,7 @@ function playerReset(){
     const pieces = "TJLOSZI";
     player.matrix = createPiece(pieces[(pieces.length * Math.random()) | 0]);
     player.pos.y = 0;
-    player.pos.x = ((arena[0].length / 2) | 0) - ((player.matrix[0] / 2) | 0);
+    player.pos.x = ((arena[0].length / 2) | 0) - ((player.matrix[0].length / 2) | 0);
     if(collide(arena, player)){
         arena.forEach((row) => row.fill(0));
         player.score = 0;
